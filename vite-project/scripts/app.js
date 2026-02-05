@@ -239,8 +239,9 @@ function DisplayList() {
         deleteBtn.classList = "px-1 w-5 inline-block";
         deleteBtn.addEventListener("click", (event) => {
             isFavorited = false;
+            favoritesCheck();
             removeFromStorage(index);
-            DisplayList()
+            DisplayList();
             outerListenerActive = false;
         })
 
