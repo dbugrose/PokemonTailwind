@@ -20,29 +20,29 @@
   <title>Pokemon API</title>
 </head>
 
-<body class="bg-[url(/assets/61lqRxbsC5L._AC_UF894,1000_QL80_.jpg)] bg-repeat bg-size-[100px] ">
+<body class="bg-[url(/assets/61lqRxbsC5L._AC_UF894,1000_QL80_.jpg)] bg-repeat bg-size-[100px] montserrat">
   <section class="col-span-full flex content-center flex-col mt-4 mb-4 text-center">
-    <h1 class="pokemonFont text-5xl fugaz-one-regular">Who's that Pokemon?</h1>
+    <h1 class="pokemonFont text-6xl fugaz-one-regular">Who's that Pokemon?</h1>
     <section><input type="text" id="userInput" class="bg-[#386ABBaa] rounded-3xl size-3/5 py-2">
       <button class="fugaz-one-regular rounded-2xl text-amber-300 bg-[#386ABB] py-2 px-2" id="EnterBtn">Enter</button>
       <button class="fugaz-one-regular rounded-2xl text-amber-300 bg-[#386ABB] py-2 px-2"
         id="RandomizeBtn">Randomize</button>
     </section>
-    <div class="col pokemonFont fugaz-one-regular text-4xl mt-4 mb-4">
+    <div class="col pokemonFont fugaz-one-regular text-6xl mt-4 mb-4">
       <h1>It's <span id="pokemonName">Pikachu</span>!</h1>
   </section>
   <section>
-    <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:1 grid-cols-1 gap-5 rounded-2xl bg-[#386ABBaa] p-5 h-fit">
-      <section class="grid lg:col-span-1 md:col-span-1 sm:col-span-full lg:row-span-2 lg:order-1 md:order-1 sm:order-1 place-content-center place-items-center text-center bg-[#ffffffaa] rounded-2xl h-auto">
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:1 grid-cols-1 lg:gap-5 md:gap-5 sm:gap-5 sm:mx-5 lg:px-5 md:px-5 sm:px-5 rounded-2xl bg-[#386ABBaa] p-5 h-fit  place-content-center">
+      <section class="grid lg:col-span-1 md:col-span-1 sm:col-span-full lg:row-span-2 lg:order-1 md:order-1 sm:order-1 place-content-center place-items-center text-center bg-[#ffffffaa] rounded-2xl h-auto p-5">
         <img src="/assets/star.png" width="20px" alt="star icon" id="favoriteBtn">
-        <h2 id="pokedexNumber">#25</h2>
+        <h2 class="text-3xl" id="pokedexNumber">#25</h2>
         <p><img src="/assets/pikachu.png" id="mainImg" alt="pikachu" width="200px"></p>
-        <p id="form">Default Form <span><img src="/assets/image-removebg-preview.png" width="26px" alt="shiny icon" class="place-self-center"
+        <p id="form" class="text-2xl">Default Form</p><span><img src="/assets/image-removebg-preview.png" width="26px" alt="shiny icon" class="place-self-center"
             id="shinyBtn"></span>
-        <p><span id="type">Electric</span> Type</p>
+        <p class="text-2xl"><span id="type">Electric</span> Type</p>
       </section>
-      <section class="grid col-span-2 row-span-1 place-content-center place-items-center text-center lg:order-2 md-order-3 sm:order-3 w-full bg-[#ffffffaa] rounded-2xl h-auto">
-        <h4 class="text-center">Moves:</h4>
+      <section class="grid col-span-2 row-span-1 place-content-center place-items-center text-center lg:order-2 md-order-3 sm:order-3 w-full bg-[#ffffffaa] rounded-2xl h-auto p-5">
+        <h4 class="text-2xl">Moves:</h4>
         <p id="moves">mega-punch, pay-day, thunder-punch, slam, double-kick, mega-kick, headbutt, body-slam,
           take-down,
           double-edge, tail-whip, growl, surf, submission, counter, seismic-toss, strength, thunder-shock,
@@ -62,8 +62,8 @@
           laser-focus,
           rising-voltage, tera-blast, trailblaze, alluring-voice, upper-hand </p>
       </section>
-      <section class="grid col-span-2 row-span-1 place-content-center place-items-center text-center bg-[#ffffffaa] rounded-2xl h-auto w-full lg:order-3 md-order-4 sm:order-4">
-        <H4 class="">Locations</H4>
+      <section class="grid col-span-2 row-span-1 place-content-center place-items-center text-center bg-[#ffffffaa] rounded-2xl h-auto w-full lg:order-3 md-order-4 sm:order-4 p-5">
+        <H4 class="text-2xl">Locations</H4>
         <p id="locations">trophy-garden-area, pallet-town-area, kanto-route-2-south-towards-viridian-city,
           viridian-forest-area, power-plant-area, hoenn-safari-zone-sw, hoenn-safari-zone-se,
           kalos-route-3-area, santalune-forest-area, slateport-city-contest-hall,
@@ -71,14 +71,14 @@
           alola-route-1-east, alola-route-1-west, hauoli-city-shopping-district,
           heahea-city-surf-association</p>
       </section>
-      <section class="grid col-span-1 row-span-1 lg:order-4 md-order-2 sm:order-2 place-content-center place-items-center text-center w-full bg-[#ffffffaa] rounded-2xl h-full">
-        <H4 class="">Abilities</H4>
+      <section class="grid col-span-1 row-span-1 lg:order-4 md-order-2 sm:order-2 place-content-center place-items-center text-center w-full bg-[#ffffffaa] rounded-2xl h-full p-5">
+        <H4 class="text-2xl">Abilities</H4>
         <p id="abilities">static, lightning-rod</p>
 
       </section>
-      <section class="grid col-span-2 row-span-1 text-center bg-[#ffffffaa] rounded-2xl h-full lg:order-4 md-order-5 sm:order-5 w-full">
-        <H4 class="">Evolution Line</H4>
-        <div class="grid grid-rows-1 grid-cols-3 place-content-center place-items-center text-center" id="evolutionBox">
+      <section class="grid col-span-2 row-span-1 text-center bg-[#ffffffaa] rounded-2xl h-full lg:order-4 md-order-5 sm:order-5 w-full p-5">
+        <H4 class="text-2xl">Evolution Line</H4>
+        <div class="grid grid-rows-1 grid-cols-3 text-center place-content-around" id="evolutionBox">
           <div><img src="/assets/172.png" width="200px" class="" alt="pichu">
             <p>Pichu</p>
           </div>
@@ -90,9 +90,9 @@
           </div>
         </div>
       </section>
-      <section class="grid col-span-full row-span-1 lg:order-6 md-order-6 sm:order-6 place-content-center place-items-center text-center bg-[#ffffffaa] rounded-2xl h-auto ">
-        <H4 class="text-center">Favorites</H4>
-        <div id="favoritesBox"></div>
+      <section class="grid lg:col-span-full md:col-span-full smcol-span-full row-span-1 lg:order-6 md-order-6 sm:order-6 bg-[#ffffffaa] rounded-2xl h-auto flex place-items-center p-5">
+        <H4 class="text-2xl">Favorites</H4>
+        <div id="favoritesBox" class="text-center inline-block"></div>
       </section>
   </section>
   <script type="module" src="./scripts/app.js"></script>

@@ -42,7 +42,7 @@ let response;
 async function GetAPI(pokemon) {
 
     if (!searchingFromFavorites && !searchingForPics && !rnd) { pokemon = userInput.value; }
-    if (favoritePokemonList.includes(userInput.value)) { isFavorited = true }
+    if (favoritePokemonList.includes(pokemon)) { isFavorited = true }
     else { isFavorited = false }
     favoritesCheck();
     if (rnd == true) { pokemon = (Math.floor(Math.random() * 650)).toString(); }
@@ -66,8 +66,8 @@ async function updatePokemon(pokemon) {
     if (!searchingFromFavorites && !searchingForPics) { pokemon = userInput.value; }
     if (favoritePokemonList.includes(userInput.value)) { isFavorited = true }
     else { isFavorited = false }
-    favoritesCheck();
     await GetAPI(pokemon);
+    favoritesCheck();
     startShiny = null;
     //abilities update
     Abilities.textContent = "";
@@ -236,11 +236,10 @@ function DisplayList() {
 
         const deleteBtn = document.createElement("img");
         deleteBtn.src = "/assets/star filled.png";
-        deleteBtn.classList = "px-1 w-5";
+        deleteBtn.classList = "px-1 w-5 inline-block";
         deleteBtn.addEventListener("click", (event) => {
             isFavorited = false;
             removeFromStorage(index);
-            favoritesCheck();
             DisplayList()
             outerListenerActive = false;
         })
@@ -334,13 +333,26 @@ EnterBtn.addEventListener("click", () => {
 
 ShinyBtn.addEventListener("click", () => {
     if (!(startShiny == null)) {
-        if (!startShiny) { MainImg.src = "/assets/pikachushiny.png"; }
-        else if (startShiny) { MainImg.src = "/assets/pikachu.png"; }
+        if (!startShiny) { 
+            Form.textContent = "Shiny Form";
+            MainImg.src = "/assets/pikachushiny.png"; 
+           
+         }
+        else if (startShiny) { MainImg.src = "/assets/pikachu.png"; 
+            Form.textContent = "Default Form";
+        }
         startShiny = !startShiny;
+
     }
     else {
-        if (isShiny) { MainImg.src = data.sprites.other["official-artwork"].front_default; }
-        else { MainImg.src = data.sprites.other["official-artwork"].front_shiny; }
+        if (isShiny) { MainImg.src = data.sprites.other["official-artwork"].front_default; 
+                        Form.textContent = "Default Form";
+
+        }
+        else { MainImg.src = data.sprites.other["official-artwork"].front_shiny;
+                        Form.textContent = "Shiny Form";
+
+         }
         isShiny = !isShiny;
     }
 })
