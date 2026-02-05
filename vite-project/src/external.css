@@ -1,0 +1,12 @@
+.fugaz-one-regular {
+  font-family: "Fugaz One", sans-serif !important;
+  font-weight: 500;
+  font-style: bold;
+}
+.pokemonFont {
+color: #386ABB;
+  -webkit-text-size-adjust: 90%;
+  text-size-adjust: 90%; 
+  -webkit-text-fill-color: #FFCC03;
+  -webkit-text-stroke: 2px;
+}
