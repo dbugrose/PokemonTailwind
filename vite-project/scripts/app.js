@@ -218,6 +218,7 @@ function DisplayList() {
     if (rnd == true) {
     pokemon = PokemonName.textContent;
     }
+    outerListenerActive = true;
     favoritePokemonList = getLocalStorage();
     FavoritesBox.innerHTML = "";
     favoritePokemonList.forEach((pokemon, index) => {
