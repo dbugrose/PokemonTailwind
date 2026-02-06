@@ -305,9 +305,10 @@ RandomizeBtn.addEventListener("click", () => {
     rnd = true;
     searchingFromFavorites = false;
     console.log(pokemon);
-    favoritesCheck();
     updatePokemon(pokemon);
     DisplayList();
+    favoritesCheck();
+
 })
 
 userInput.addEventListener("keypress", (event) => {
