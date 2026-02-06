@@ -34,9 +34,11 @@ let evolutionNames = [];
 let evolution;
 let evolutionName;
 let index;
-let outerListenerActive = true;
 let rnd = false;
 let response;
+let EvoImage;
+let EvoName;
+let ImgAndName;
 //-------------------main fetch function start --------------------------//
 
 async function GetAPI(pokemon) {
@@ -154,7 +156,7 @@ async function FetchEvolutions() {
     let evolutionNames = [];
     evolutionNames.push(evo2.chain.species.name)
 
-    for (let i = 0; i < evo2.chain.evolves_to.length; i++) {        
+    for (let i = 0; i < evo2.chain.evolves_to.length; i++) {
         {
             evolutionNames.push(evo2.chain.evolves_to[i].species.name);
             for (let j = 0; j < evo2.chain.evolves_to[i].evolves_to.length; j++) {
@@ -165,9 +167,8 @@ async function FetchEvolutions() {
         }
 
     }
-    if (evolutionNames.length<2)
-    {EvolutionBox.textContent = "N/A"}
-    else {FetchEvolutionsPics(evolutionNames);}
+    if (evolutionNames.length < 2) { EvolutionBox.textContent = "N/A" }
+    else { FetchEvolutionsPics(evolutionNames); }
 }
 
 //-------------------picture fetch function start --------------------------//
@@ -183,10 +184,18 @@ function FetchEvolutionsPics(evolutionNames) {
 async function GetAPIPictures(evolutionName) {
     response = await fetch(`https://pokeapi.co/api/v2/pokemon/${evolutionName}`)
     let evodata = await response.json();
-    const EvoImage = document.createElement("img");
+    ImgAndName = document.createElement("div");
+    EvoImage = document.createElement("img");
+    EvoName = document.createElement("p");
+    EvoName.innerText = capitalize(evolutionName);
     EvoImage.src = evodata.sprites.other["official-artwork"].front_default;
-    EvoImage.classList = "place-self-center";
-    EvolutionBox.appendChild(EvoImage);
+    ImgAndName.appendChild(EvoImage);
+    ImgAndName.appendChild(EvoName);
+
+
+    EvolutionBox.appendChild(ImgAndName);
+
+
 }
 //-------------------picture fetch function end--------------------------//
 
@@ -216,9 +225,9 @@ function removeFromStorage(index) {
 
 function DisplayList() {
     if (rnd == true) {
-    pokemon = PokemonName.textContent;
+        pokemon = PokemonName.textContent;
     }
-    outerListenerActive = true;
+
     favoritePokemonList = getLocalStorage();
     FavoritesBox.innerHTML = "";
     favoritePokemonList.forEach((pokemon, index) => {
@@ -227,12 +236,10 @@ function DisplayList() {
         favSpan.textContent = pokemon;
         favoritePokemon = favSpan.textContent;
         favSpan.addEventListener("click", (event) => {
-            if (outerListenerActive) {
-                searchingFromFavorites = true;
-                isFavorited = true;
-                GetAPI(pokemon);
-                updatePokemon(pokemon);
-            }
+            searchingFromFavorites = true;
+            isFavorited = true;
+            GetAPI(pokemon);
+            updatePokemon(pokemon);
         })
 
         const deleteBtn = document.createElement("img");
@@ -243,13 +250,12 @@ function DisplayList() {
             favoritesCheck();
             removeFromStorage(index);
             DisplayList();
-            outerListenerActive = false;
         })
 
         favSpan.appendChild(deleteBtn);
         FavoritesBox.appendChild(favSpan);
     })
-rnd = false;
+    rnd = false;
 }
 
 
@@ -335,26 +341,29 @@ EnterBtn.addEventListener("click", () => {
 
 ShinyBtn.addEventListener("click", () => {
     if (!(startShiny == null)) {
-        if (!startShiny) { 
+        if (!startShiny) {
             Form.textContent = "Shiny Form";
-            MainImg.src = "/assets/pikachushiny.png"; 
-           
-         }
-        else if (startShiny) { MainImg.src = "/assets/pikachu.png"; 
+            MainImg.src = "/assets/pikachushiny.png";
+
+        }
+        else if (startShiny) {
+            MainImg.src = "/assets/pikachu.png";
             Form.textContent = "Default Form";
         }
         startShiny = !startShiny;
 
     }
     else {
-        if (isShiny) { MainImg.src = data.sprites.other["official-artwork"].front_default; 
-                        Form.textContent = "Default Form";
+        if (isShiny) {
+            MainImg.src = data.sprites.other["official-artwork"].front_default;
+            Form.textContent = "Default Form";
 
         }
-        else { MainImg.src = data.sprites.other["official-artwork"].front_shiny;
-                        Form.textContent = "Shiny Form";
+        else {
+            MainImg.src = data.sprites.other["official-artwork"].front_shiny;
+            Form.textContent = "Shiny Form";
 
-         }
+        }
         isShiny = !isShiny;
     }
 })
